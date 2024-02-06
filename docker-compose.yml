@@ -29,6 +29,7 @@ services:
       - QUARKUS_DATASOURCE_USERNAME=app_postagem
       - QUARKUS_DATASOURCE_PASSWORD=p0st4g3m
       - QUARKUS_DATASOURCE_KIND=postgresql
+      - QUARKUS_DATASOURCE_METRICS_ENABLED=true
       #JAEGER ENV
       - QUARKUS_JAEGER_ENDPOINT=http://jaeger:4317
       #GRAYLOG
@@ -47,6 +48,7 @@ services:
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:mysql://cadastrodb:3306/cadastrodb
       - QUARKUS_DATASOURCE_USERNAME=app_cadastro
       - QUARKUS_DATASOURCE_PASSWORD=k4d45tr0
+      - QUARKUS_DATASOURCE_METRICS_ENABLED=true
       - PORT=8083
       #JAEGER ENV
       - QUARKUS_JAEGER_ENDPOINT=http://jaeger:4317
@@ -65,6 +67,7 @@ services:
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:mysql://cadastrodb:3306/cadastrodb
       - QUARKUS_DATASOURCE_USERNAME=app_cadastro
       - QUARKUS_DATASOURCE_PASSWORD=k4d45tr0
+      - QUARKUS_DATASOURCE_METRICS_ENABLED=true
       - PORT=8082
       #JAEGER ENV
       - QUARKUS_JAEGER_ENDPOINT=http://jaeger:4317
