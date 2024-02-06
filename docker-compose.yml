@@ -21,6 +21,16 @@ services:
     volumes:
       - ./sql/postagem.sql:/docker-entrypoint-initdb.d/seu_script.sql
 
+  doasanguepoa:
+    image: doasanguepoa-front:1.0.0
+    container_name: doasanguepoa-front
+    ports:
+      - 8080:80
+    depends_on:
+      - postagem
+      - cadastro
+      - login
+
   postagem:
     image: leogoandete/postagens:latest
     container_name: postagem
