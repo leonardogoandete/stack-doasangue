@@ -10,7 +10,8 @@ services:
     networks:
       - dados
     volumes:
-      - ./sql/cadastro.sql:/docker-entrypoint-initdb.d/seu_script.sql
+      #- ./sql/cadastro.sql:/docker-entrypoint-initdb.d/seu_script.sql
+      - cadastrodb_vol:/var/lib/mysql
     # ports:
     #   - 3306:3306
 
@@ -23,8 +24,8 @@ services:
     networks:
       - dados
     volumes:
-      - ./sql/postagem.sql:/docker-entrypoint-initdb.d/seu_script.sql
-      #- postagem_database:/var/lib/postgresql/data
+      #- ./sql/postagem.sql:/docker-entrypoint-initdb.d/seu_script.sql
+      - postagemdb_vol:/var/lib/postgresql/data
 
   doasanguepoa:
     image: leogoandete/doasanguepoa-front:latest
@@ -192,7 +193,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./config:/etc/prometheus
-      - ./data:/prometheus
+      - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -220,3 +221,11 @@ networks:
     driver: bridge
   dados:
     driver: bridge
+
+volumes:
+  postagemdb_vol:
+    driver: local
+  cadastrodb_vol:
+    driver: local
+  prometheus_data:
+    driver: local 
